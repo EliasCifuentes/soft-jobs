@@ -4,6 +4,7 @@ import 'dotenv/config'
 import useRoutes from './routes/userRoutes.js'
 import authRoutes from './routes/authRoutes.js'
 import { errorHandler } from '../../likeme/Backend/src/middlewares/errorHandler.js'
+import { logger } from './middlewares/logger.js'
 
 const app = express()
 const PORT = process.env.PORT ?? 5000
@@ -11,6 +12,7 @@ const PORT = process.env.PORT ?? 5000
 //Middleware
 app.use(express.json())
 app.use(cors())
+app.use(logger)
 app.use(useRoutes)
 app.use(authRoutes)
 
